@@ -5,14 +5,27 @@ Project Status Reports - Parts Database UI
 “... provide your TA with a simple written progress report of your personal activity for a given week.  This report should include issues you are struggling with, newly discovered problems, and what solutions you are taking to overcome them.  Describe the short-term milestones you are tracking.”
 
 
-Week
-	Jaswin Jabbal
-	[Team Member]
-	[Team Member]
-	9/10 - 9/16
-	* This week I worked on setting up a desirable framework  for creating web applications through python, with Flask.
+Week | 9/10 - 9/16
+-------------------
+Student | Jaswin Jabbal
+* This week I worked on setting up a desirable framework  for creating web applications through python, with Flask.
 * I was able to see “Hello World” running on my local server, at a specified HTML page.
 * For next week, I hope to establish a connection to MySQL from python and add button functionality as its own HTML file + continue video series (2/16)
-	* 	* 	9/17 - 9/23
-	* 	* 	* 	9/24 - 9/30
-	* 	* 	*
+
+Student | [Team Member]
+
+
+Student | [Team Member]
+
+
+
+Week | 9/17 - 9/23
+-------------------
+Student | Jaswin Jabbal
+
+
+Student | [Team Member]
+
+
+Student | [Team Member]
+
