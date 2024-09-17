@@ -12,7 +12,7 @@ Student | Jaswin Jabbal
 * I was able to see “Hello World” running on my local server, at a specified HTML page.
 * For next week, I hope to establish a connection to MySQL from python and add button functionality as its own HTML file + continue video series (2/16)
 
-Student | [Team Member]
+Student | [Jamaal Bloom]
 
 
 Student | [Team Member]
