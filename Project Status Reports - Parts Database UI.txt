@@ -16,8 +16,9 @@ Student | [Jamaal Bloom]
 
 
 Student | Tony Beneventi
-* test change
-
+* This week I was researching possible code languages and IDEs.
+* I tried Xcode and Swift but could not get the most updated version on my MAC.
+* To solve this I had to move to a cross platform option such as using Java as the backend and flutter flow as the front end.
 
 Week | 9/17 - 9/23
 -------------------
