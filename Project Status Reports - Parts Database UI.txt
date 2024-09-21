@@ -12,21 +12,47 @@ Student | Jaswin Jabbal
 * I was able to see “Hello World” running on my local server, at a specified HTML page.
 * For next week, I hope to establish a connection to MySQL from python and add button functionality as its own HTML file + continue video series (2/16)
 
-Student | [Jamaal Bloom]
-
+Student | Jamaal Bloom
 
 Student | Tony Beneventi
 * This week I was researching possible code languages and IDEs.
 * I tried Xcode and Swift but could not get the most updated version on my MAC.
 * To solve this I had to move to a cross platform option such as using Java as the backend and flutter flow as the front end.
 
+
 Week | 9/17 - 9/23
 -------------------
 Student | Jaswin Jabbal
 
 
-Student | [Team Member]
+Student | Jamaal Bloom
 
 
-Student | [Team Member]
+Student | Tony Beneventi
+* This week I established a connection between a local Mysql database and my java backend code.
+* By the end of the week I am hoping to create an api call from my frontend on flutter flow to my java backend code.
+* In the upcoming week I want to start developing for the introduction (Hello World), project.
+* This will entail getting my apple developer account started.
 
+
+Week | 9/24 - 9/30
+-------------------
+Student | Jaswin Jabbal
+
+
+Student | Jamaal Bloom
+
+
+Student | Tony Beneventi
+
+
+
+Week | 10/1 - 10/8
+-------------------
+Student | Jaswin Jabbal
+
+
+Student | Jamaal Bloom
+
+
+Student | Tony Beneventi
