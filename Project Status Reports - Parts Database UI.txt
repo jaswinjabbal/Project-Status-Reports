@@ -23,7 +23,9 @@ Student | Tony Beneventi
 Week | 9/17 - 9/23
 -------------------
 Student | Jaswin Jabbal
-
+* This week I established the connection to Dr. Lusher's database through the mysql-connector for python. 
+* Additionally, I explored the possbility for using streamlit.io for UI demonstrations, with its ease of use for DB operations.
+* In the coming weeks, I will work on integrating UI widget capabilties to the WIP streamlit demo web application.
 
 Student | Jamaal Bloom
 
@@ -38,7 +40,9 @@ Student | Tony Beneventi
 Week | 9/24 - 9/30
 -------------------
 Student | Jaswin Jabbal
-
+* This week I collaborated on the FSR, ICD, and led the Execution Plan, as well as our midterm presentation.
+* This week I did not update the code itself much; rather I was engaged in tutorials for streamlit and Flask designs.
+* Next week, I will study what it may take to replicate a streamlit page in Flask.
 
 Student | Jamaal Bloom
 
