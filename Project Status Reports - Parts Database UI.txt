@@ -48,7 +48,9 @@ Student | Jamaal Bloom
 
 
 Student | Tony Beneventi
-
+* This week I started developing a connection from flutter flow to my backend in java
+* I was able to work on my introduction project and create a RESTAPI Call using spring-boot and a local ngrok web server
+* By adding a button to my flutter flow, I am able to click the button and have it count every time it calls the hello world
 
 
 Week | 10/1 - 10/8
