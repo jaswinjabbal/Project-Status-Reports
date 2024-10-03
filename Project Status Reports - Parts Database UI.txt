@@ -13,6 +13,9 @@ Student | Jaswin Jabbal
 * For next week, I hope to establish a connection to MySQL from python and add button functionality as its own HTML file + continue video series (2/16)
 
 Student | Jamaal Bloom
+* This week I worked connecting the digikey api into my python code. 
+* Next week I hope to be able to read and write data from the mysql data in python. 
+* A current problem I am facing is that I have to manually input the auth code for the api
 
 Student | Tony Beneventi
 * This week I was researching possible code languages and IDEs.
@@ -28,7 +31,8 @@ Student | Jaswin Jabbal
 * In the coming weeks, I will work on integrating UI widget capabilties to the WIP streamlit demo web application.
 
 Student | Jamaal Bloom
-
+* This week I used the refresh token to replace the auth code to gather the access code
+* I also began reading the database. I noticed that some parts in the database is incorrect. I hope to resolved these errors in the upcoming weeks.
 
 Student | Tony Beneventi
 * This week I established a connection between a local Mysql database and my java backend code.
@@ -45,7 +49,8 @@ Student | Jaswin Jabbal
 * Next week, I will study what it may take to replicate a streamlit page in Flask.
 
 Student | Jamaal Bloom
-
+* This week I managed to iterate through the database in order to collect all the wrong part numbers.
+* There a many different types of errors for the part numbers so each error will need to be resolved one by one.
 
 Student | Tony Beneventi
 * This week I started developing a connection from flutter flow to my backend in java
