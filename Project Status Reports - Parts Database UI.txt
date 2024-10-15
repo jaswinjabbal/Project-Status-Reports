@@ -67,3 +67,27 @@ Student | Jamaal Bloom
 
 
 Student | Tony Beneventi
+* This week I was able to upload a basic project to the apple web development program
+* I got my license approved and deployed a basic counting app through flutter flow
+
+Week | 10/9 - 10/16
+-------------------
+Student | Jaswin Jabbal
+
+
+Student | Jamaal Bloom
+
+
+Student | Tony Beneventi
+* This week I am working to make some progress involving search query and filters.
+
+Week | 10/16 - 10/23
+-------------------
+Student | Jaswin Jabbal
+
+
+Student | Jamaal Bloom
+
+
+Student | Tony Beneventi
+
