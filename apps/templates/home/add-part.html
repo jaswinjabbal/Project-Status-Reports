@@ -1,0 +1,101 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Add Part {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary-gradient">
+                        <h4 class="card-title text-white">Add New Part</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Add Part Form -->
+                        <form id="add-part-form" method="POST">
+                            <div class="form-group">
+                                <label for="part-number">Part Number</label>
+                                <input type="text" class="form-control" id="part-number" name="part-number" placeholder="Enter part number" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-description">Description</label>
+                                <textarea class="form-control" id="part-description" name="part-description" placeholder="Enter part description" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-category">Category</label>
+                                <input type="text" class="form-control" id="part-category" name="part-category" placeholder="Enter part category" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-vendor">Vendor</label>
+                                <input type="text" class="form-control" id="part-vendor" name="part-vendor" placeholder="Enter part vendor" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-location">Location</label>
+                                <input type="text" class="form-control" id="part-location" name="part-location" placeholder="Enter storage location" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-quantity">Quantity</label>
+                                <input type="number" class="form-control" id="part-quantity" name="part-quantity" placeholder="Enter quantity" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="part-price">Price</label>
+                                <input type="number" class="form-control" id="part-price" name="part-price" placeholder="Enter price per unit" step="0.01" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Add Part</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    document.getElementById('add-part-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const data = {
+            partNumber: formData.get('part-number'),
+            description: formData.get('part-description'),
+            category: formData.get('part-category'),
+            vendor: formData.get('part-vendor'),
+            location: formData.get('part-location'),
+            quantity: formData.get('part-quantity'),
+            price: formData.get('part-price')
+        };
+
+        fetch('/add-part', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Part added successfully!");
+                event.target.reset(); // Clear the form after successful submission
+            } else {
+                alert("Failed to add part. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+        });
+    });
+</script>
+{% endblock javascripts %}

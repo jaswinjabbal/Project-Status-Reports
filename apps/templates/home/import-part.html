@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Input Part {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary-gradient">
+                        <h4 class="card-title text-white">Import Part Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Input Part Form -->
+                        <form id="input-part-form" method="POST">
+                            <div class="form-group">
+                                <label for="part-number">Enter Part Number</label>
+                                <input type="text" class="form-control" id="part-number" name="part-number" placeholder="Enter part number" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Retrieve Part Information</button>
+                        </form>
+
+                        <!-- Part Information Display -->
+                        <div id="part-info" style="display: none; margin-top: 20px;">
+                            <h5 class="card-title">Part Details</h5>
+                            <p><strong>Description:</strong> <span id="part-description"></span></p>
+                            <p><strong>Category:</strong> <span id="part-category"></span></p>
+                            <p><strong>Vendor:</strong> <span id="part-vendor"></span></p>
+                            <p><strong>Location:</strong> <span id="part-location"></span></p>
+                            <p><strong>Quantity:</strong> <span id="part-quantity"></span></p>
+                            <p><strong>Price:</strong> <span id="part-price"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    document.getElementById('input-part-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const partNumber = document.getElementById('part-number').value;
+
+        fetch(`/get-part/${partNumber}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    document.getElementById('part-description').textContent = data.description;
+                    document.getElementById('part-category').textContent = data.category;
+                    document.getElementById('part-vendor').textContent = data.vendor;
+                    document.getElementById('part-location').textContent = data.location;
+                    document.getElementById('part-quantity').textContent = data.quantity;
+                    document.getElementById('part-price').textContent = data.price;
+                    document.getElementById('part-info').style.display = 'block';
+                } else {
+                    alert("Part not found.");
+                    document.getElementById('part-info').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            });
+    });
+</script>
+{% endblock javascripts %}

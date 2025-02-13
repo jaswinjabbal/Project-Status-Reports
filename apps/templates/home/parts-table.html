@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Parts List {% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <h2 class="text-white pb-2 fw-bold">Parts List</h2>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Manufacturer</th>
+                                    <th>Vendor</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for part in parts %}
+                                <tr>
+                                    <td>{{ part.part_number }}</td>
+                                    <td>{{ part.description }}</td>
+                                    <td>{{ part.category }}</td>
+                                    <td>{{ part.manufacturer }}</td>
+                                    <td>{{ part.vendor }}</td>
+                                    <td>{{ part.cost }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

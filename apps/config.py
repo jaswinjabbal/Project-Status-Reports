@@ -28,13 +28,18 @@ class Config(object):
 
     USE_SQLITE  = True 
 
+    SQLALCHEMY_ENGINE_OPTIONS = {
+    "pool_recycle": 280,  # Recycle connections every 280 seconds
+    "pool_pre_ping": True  # Check connection before using it
+    }
+
     # try to set up a Relational DBMS
     if DB_ENGINE and DB_NAME and DB_USERNAME:
 
         try:
             
             # Relational DBMS: PSQL, MySql
-            SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(
+            SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://ecen404team45:ecen404$592H#!cx@lusherengineeringservices.com:22/ECEN 404 Database'.format(
                 DB_ENGINE,
                 DB_USERNAME,
                 DB_PASS,

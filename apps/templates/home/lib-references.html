@@ -1,0 +1,74 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Part and Library References {% endblock %}
+
+<!-- Specific Page CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Part and Library References</h2>
+                    <h5 class="text-white op-7 mb-2">Manage Part Library References</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="page-inner mt--5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Part Library References Form -->
+                        <form>
+                            <div class="form-group">
+                                <label for="footprintLibRef">Footprint Library Ref:</label>
+                                <input type="text" class="form-control" id="footprintLibRef" placeholder="Enter Footprint Library Ref">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="footprintLibPath">Footprint Library Path:</label>
+                                <input type="text" class="form-control" id="footprintLibPath" placeholder="Lusher Engineering PCB Footprints.PcbLib">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="schematicLibRef">Schematic Library Ref:</label>
+                                <input type="text" class="form-control" id="schematicLibRef" placeholder="Enter Schematic Library Ref">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="schematicLibPath">Schematic Library Path:</label>
+                                <input type="text" class="form-control" id="schematicLibPath" placeholder="Enter Schematic Library Path">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dataSheetPath">Data Sheet Path:</label>
+                                <input type="text" class="form-control" id="dataSheetPath" placeholder="Enter Data Sheet Path">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="simulationModel">Simulation Model:</label>
+                                <input type="text" class="form-control" id="simulationModel" placeholder="Enter Simulation Model">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signalIntegrityModel">Signal Integrity Model:</label>
+                                <input type="text" class="form-control" id="signalIntegrityModel" placeholder="Enter Signal Integrity Model">
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Export Part {% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <h2 class="text-white pb-2 fw-bold">Export Part</h2>
+            <h5 class="text-white op-7 mb-2">Search and export parts to the database</h5>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Search for a Part</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="search-form">
+                            <div class="form-group">
+                                <label for="partSearch">Part Number:</label>
+                                <input type="text" id="partSearch" class="form-control" placeholder="Enter part number">
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" onclick="searchPart()">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-3" id="results-card" style="display: none;">
+                    <div class="card-header">
+                        <h4 class="card-title">Part Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>Description</th>
+                                    <th>Manufacturer</th>
+                                    <th>Category</th>
+                                    <th>Vendor</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="partNumber">12345</td>
+                                    <td id="description">Example Description</td>
+                                    <td id="manufacturer">Example Manufacturer</td>
+                                    <td id="category">Example Category</td>
+                                    <td id="vendor">Example Vendor</td>
+                                    <td id="cost">$100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn btn-secondary" onclick="exportToDB()">Export to Database</button>
+                            <button class="btn btn-warning" onclick="updatePart()">Update Part</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchPart() {
+        // Simulate a search function - display results card with dummy data
+        document.getElementById('results-card').style.display = 'block';
+    }
+
+    function exportToDB() {
+        alert('Part exported to the database successfully!');
+    }
+
+    function updatePart() {
+        alert('Part updated in the database successfully!');
+    }
+</script>
+{% endblock content %}

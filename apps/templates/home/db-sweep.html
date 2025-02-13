@@ -1,0 +1,97 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Filter Parts Database {% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <h2 class="text-white pb-2 fw-bold">Filter Parts Database</h2>
+            <h5 class="text-white op-7 mb-2">View and filter parts in the system</h5>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Database of Parts</h4>
+                        <div class="table-responsive">
+                            <input id="searchInput" type="text" class="form-control mb-3" placeholder="Search for parts...">
+                            <table class="table table-bordered" id="partsTable">
+                                <thead>
+                                    <tr>
+                                        <th onclick="sortTable(0)">Part Number</th>
+                                        <th onclick="sortTable(1)">Description</th>
+                                        <th onclick="sortTable(2)">Manufacturer</th>
+                                        <th onclick="sortTable(3)">Category</th>
+                                        <th onclick="sortTable(4)">Vendor</th>
+                                        <th onclick="sortTable(5)">Cost</th>
+                                        <th onclick="sortTable(6)">Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for part in Parts %}
+                                    <tr>
+                                        <td>{{ part.part_number }}</td>
+                                        <td>{{ part.description }}</td>
+                                        <td>{{ part.manufacturer }}</td>
+                                        <td>{{ part.category }}</td>
+                                        <td>{{ part.vendor }}</td>
+                                        <td>${{ part.cost }}</td>
+                                        <td>{{ part.last_updated.strftime('%Y-%m-%d %H:%M:%S') if part.last_updated else 'N/A' }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="7" class="text-center">No parts found in the database.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Search filter functionality
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toUpperCase();
+        let table = document.getElementById('partsTable');
+        let rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+            let cells = rows[i].getElementsByTagName('td');
+            let match = false;
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].textContent.toUpperCase().includes(filter)) {
+                    match = true;
+                    break;
+                }
+            }
+            rows[i].style.display = match ? '' : 'none';
+        }
+    });
+
+    // Sort table functionality
+    function sortTable(columnIndex) {
+        let table = document.getElementById('partsTable');
+        let rows = Array.from(table.rows).slice(1);
+        let ascending = table.getAttribute('data-sort-asc') === 'true';
+
+        rows.sort((a, b) => {
+            let aText = a.cells[columnIndex].textContent.trim();
+            let bText = b.cells[columnIndex].textContent.trim();
+
+            return ascending ? aText.localeCompare(bText) : bText.localeCompare(aText);
+        });
+
+        table.setAttribute('data-sort-asc', !ascending);
+        rows.forEach(row => table.tBodies[0].appendChild(row));
+    }
+</script>
+{% endblock content %}

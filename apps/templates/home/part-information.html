@@ -1,0 +1,106 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Input Part {% endblock %}
+
+<!-- Specific Page CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Input Part Information</h2>
+                    <h5 class="text-white op-7 mb-2">Enter details to display specific part information below</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Part Input Form</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="partForm">
+                            <!-- Example 1: Part Number -->
+                            <div class="form-group">
+                                <label for="partNumber">Part Number</label>
+                                <input type="text" class="form-control" id="partNumber" placeholder="Enter Part Number">
+                            </div>
+
+                            <!-- Example 2: Manufacturer -->
+                            <div class="form-group">
+                                <label for="manufacturer">Manufacturer</label>
+                                <input type="text" class="form-control" id="manufacturer" placeholder="Enter Manufacturer">
+                            </div>
+
+                            <!-- Example 3: Category -->
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <input type="text" class="form-control" id="category" placeholder="Enter Part Category">
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="displayPartInfo()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Part Information Display -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4 class="card-title">Part Information Display</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="partInfo">
+                            <p class="text-muted">No part information to display. Please enter details above and submit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function displayPartInfo() {
+        // Get input values
+        const partNumber = document.getElementById('partNumber').value;
+        const manufacturer = document.getElementById('manufacturer').value;
+        const category = document.getElementById('category').value;
+
+        // Validate inputs
+        if (!partNumber && !manufacturer && !category) {
+            document.getElementById('partInfo').innerHTML = '<p class="text-danger">Please fill at least one field to display part information.</p>';
+            return;
+        }
+
+        // Display results dynamically
+        let partInfoHTML = '<h5>Part Details:</h5>';
+        if (partNumber) {
+            partInfoHTML += `<p><strong>Part Number:</strong> ${partNumber}</p>`;
+        }
+        if (manufacturer) {
+            partInfoHTML += `<p><strong>Manufacturer:</strong> ${manufacturer}</p>`;
+        }
+        if (category) {
+            partInfoHTML += `<p><strong>Category:</strong> ${category}</p>`;
+        }
+
+        // Add dummy data for demonstration
+        if (partNumber === '12345') {
+            partInfoHTML += '<p><strong>Description:</strong> High-efficiency resistor for power applications</p>';
+        } else if (manufacturer === 'Acme Corp') {
+            partInfoHTML += '<p><strong>Description:</strong> Premium-grade electronic components from Acme</p>';
+        } else if (category === 'Capacitor') {
+            partInfoHTML += '<p><strong>Description:</strong> Wide range of capacitors for various applications</p>';
+        }
+
+        document.getElementById('partInfo').innerHTML = partInfoHTML;
+    }
+</script>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Parts Database {% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <h2 class="text-white pb-2 fw-bold">Parts Database</h2>
+            <h5 class="text-white op-7 mb-2">View all parts in the system</h5>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Database of Parts</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Part Number</th>
+                                        <th>Description</th>
+                                        <th>Manufacturer</th>
+                                        <th>Category</th>
+                                        <th>Vendor</th>
+                                        <th>Cost</th>
+                                        <th>Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for part in Parts %}
+                                    <tr>
+                                        <td>{{ part.part_number }}</td>
+                                        <td>{{ part.description }}</td>
+                                        <td>{{ part.manufacturer }}</td>
+                                        <td>{{ part.category }}</td>
+                                        <td>{{ part.vendor }}</td>
+                                        <td>${{ part.cost }}</td>
+                                        <td>{{ part.last_updated.strftime('%Y-%m-%d %H:%M:%S') if part.last_updated else 'N/A' }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="7" class="text-center">No parts found in the database.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

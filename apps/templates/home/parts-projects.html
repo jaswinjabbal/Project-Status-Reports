@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Parts Projects {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary-gradient">
+                        <h4 class="card-title text-white">Part Projects</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Part Number Input Form -->
+                        <form id="part-number-form" method="POST">
+                            <div class="form-group">
+                                <label for="part-number">Enter Part Number</label>
+                                <input type="text" class="form-control" id="part-number" name="part-number" placeholder="Part Number">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        
+                        <!-- Project Details Section, initially hidden -->
+                        <div id="project-details" style="display: none; margin-top: 20px;">
+                            <h5>Project Details for Part Number: <span id="display-part-number"></span></h5>
+
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Charge Number</th>
+                                        <th>Project Lead</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Placeholder for project rows, to be dynamically populated -->
+                                    <tr>
+                                        <td><input type="text" class="form-control" placeholder="Project Name"></td>
+                                        <td><input type="text" class="form-control" placeholder="Charge Number"></td>
+                                        <td><input type="text" class="form-control" placeholder="Project Lead"></td>
+                                        <td><input type="text" class="form-control" placeholder="Description"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <button class="btn btn-success" id="add-project">Add Project</button>
+                                <button class="btn btn-danger" id="remove-project">Remove Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    document.getElementById('part-number-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const partNumber = document.getElementById('part-number').value;
+        document.getElementById('display-part-number').innerText = partNumber;
+        document.getElementById('project-details').style.display = 'block';
+    });
+
+    document.getElementById('add-project').addEventListener('click', function() {
+        const tableBody = document.querySelector('#project-details table tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" placeholder="Project Name"></td>
+            <td><input type="text" class="form-control" placeholder="Charge Number"></td>
+            <td><input type="text" class="form-control" placeholder="Project Lead"></td>
+            <td><input type="text" class="form-control" placeholder="Description"></td>
+        `;
+        tableBody.appendChild(newRow);
+    });
+
+    document.getElementById('remove-project').addEventListener('click', function() {
+        const tableBody = document.querySelector('#project-details table tbody');
+        if (tableBody.rows.length > 1) { // Keep at least one row
+            tableBody.removeChild(tableBody.lastChild);
+        }
+    });
+</script>
+{% endblock javascripts %}
