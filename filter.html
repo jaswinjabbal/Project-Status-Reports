@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Filter Parts{% endblock %}
+{% block content %}
+<h2 class="mb-4">Filter Parts</h2>
+<form method="POST" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Filter Category</label>
+        <input type="text" class="form-control" name="category" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control" name="value" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-info">Apply Filter</button>
+    </div>
+</form>
+
+{% if data %}
+<h3 class="mt-4">Filtered Results</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead><tr>{% for header in data[0].keys() %}<th>{{ header }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for row in data %}
+            <tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
