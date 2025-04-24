@@ -1,35 +1,24 @@
 package com.example.demo;
 
+//import java maps which is important to map out JSON Return values for further flutterflow parsing
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
+//import spring-boot frameworks
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
+
 import org.springframework.http.MediaType;
 
-//http://localhost:8080/perform-mysql-task?searchTerm=cap
-//Invoke-WebRequest -Uri "http://localhost:8080/insert-part?partName=Resistor&partDescription=10KΩ" -Method POST | Select-Object -ExpandProperty Content
-//Invoke-WebRequest -Uri "http://localhost:8080/delete-part?id=123" -Method DELETE | Select-Object -ExpandProperty Content
-//Invoke-WebRequest -Uri "http://localhost:8080/update-part?id=123&newDescription=UpdatedValue" -Method PUT | Select-Object -ExpandProperty Content
-
-
-//update heroku https://startapp2-0bb4c947841d.herokuapp.com/updatePart
-
-
-//admin check
-//https://your-app.herokuapp.com/check-admin?email=user@example.com
-//https://startapp2-0bb4c947841d.herokuapp.com/check-admin?email=your_email@example.com
-
+//rest controller which handles all the API points for this controller
+//the main function of this controller is to handle the input and output logic while leaving the filter logic to the MySQL Service class
 
 @RestController
 public class MySQLController {
-
-    // Example URLs:
-    // Search: https://your-app.herokuapp.com/perform-mysql-task?searchTerm=capacitor
-    // Insert: https://your-app.herokuapp.com/insert-part?partName=Resistor&partDescription=10KΩ
-    // Delete: https://your-app.herokuapp.com/delete-part?id=123
-    // Update: https://your-app.herokuapp.com/update-part?id=123&newDescription=UpdatedValue
 
     @Autowired
     private MySQLConnectionService mySQLConnectionService;
@@ -76,6 +65,7 @@ public class MySQLController {
         return added ? " Email added as admin " + email : " Email is already an admin.";
     }
 
+    //static list of permissions inside the app, this is specifically for the home page, which can be updated through settings->Admin Settings->Configure the four switches
     private static final Map<String, Boolean> USER_PERMISSIONS = new HashMap<>(Map.of(
         "allowDelete", false,
         "allowAdd", false,
@@ -96,5 +86,40 @@ public class MySQLController {
         return ResponseEntity.ok("User permissions updated successfully.");
     }
     
+    //Getting Column Names
+    @GetMapping("/get-column-names")
+    public ResponseEntity<String> getColumnNames() {
+        String columnJson = mySQLConnectionService.getColumnNames();
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(columnJson);
+    }
+
+
+    //column name from flutterflow
+    @GetMapping("/get-values-by-column")
+    public ResponseEntity<String> getValuesByColumn(@RequestParam String columnName) {
+        String jsonResponse = mySQLConnectionService.getValuesByColumn(columnName);
+    return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(jsonResponse);
+}
+
+
+    //------------search filter
+// ------------ Search + Filter API Endpoint
+@GetMapping("/filter-parts-by-column")
+public ResponseEntity<String> filterPartsByColumn(
+        @RequestParam(required = false) String columnName,
+        @RequestParam(required = false) String value,
+        @RequestParam(required = false) String searchTerm) {
+
+    // Call your service function with the new searchTerm parameter
+    String response = mySQLConnectionService.getFilteredComplexResults(columnName, value, searchTerm);
+    return ResponseEntity.ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(response);
+}
+
+
+
+//------color
+
 
 }

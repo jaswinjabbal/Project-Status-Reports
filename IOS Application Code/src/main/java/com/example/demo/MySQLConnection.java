@@ -6,29 +6,21 @@ import java.util.Properties;
 public class MySQLConnection {
     public static void connectToMySQL() {
         int dynamicPort = 3307;  // Default port in case SSH fails
-
-
-        //Pass port or term in here statically from the demo or api endpoint
-
-
-        // 🔹 Get the forwarded SSH port dynamically
+        // Get the forwarded SSH port dynamically
         if (ConnectToSSH.isSSHConnected()) {
             dynamicPort = ConnectToSSH.getForwardedPort(); // Get the actual SSH forwarded port
         } else {
             System.out.println(" SSH not connected. Using default port: " + dynamicPort);
         }
 
-        // 🔹 JDBC URL WITHOUT database name
+        //JDBC URL WITHOUT database name
         String jdbcUrl = "jdbc:mysql://127.0.0.1:" + dynamicPort + "?useSSL=false&allowPublicKeyRetrieval=true&enabledTLSProtocols=TLSv1.2";
         
         //app
         //jdbc:mysql://127.0.0.1:${MYSQL_PORT}/${db.name}?useSSL=false&allowPublicKeyRetrieval=true&enabledTLSProtocols=TLSv1.2
-
-
-        //
         System.out.println(" Connecting to MySQL with URL: " + jdbcUrl);
 
-        // 🔹 Connection Properties
+        //Connection Properties
         Properties props = new Properties();
         props.setProperty("user", "ecen404team45");
         props.setProperty("password", "ecen404$592H#!cx");
@@ -37,19 +29,20 @@ public class MySQLConnection {
         props.setProperty("enabledTLSProtocols", "TLSv1.2");
         props.setProperty("connectTimeout", "5000");
 
-        // 🔹 Establish Connection
+        //Establish Connection
         try (Connection connection = DriverManager.getConnection(jdbcUrl, props)) {
             System.out.println(" Connected to MySQL successfully!");
 
-            // 🔹 Manually select the database
+            //Manually select the database
             try (Statement stmt = connection.createStatement()) {
                 stmt.execute("USE `lusher engineering parts database`;");
                 System.out.println(" Database selected successfully!");
             }
 
-            // 🔹 Run Basic Tests
+            // Run Basic Tests
             runBasicTests(connection);
 
+        //catches any error if the conneciton fails
         } catch (SQLException e) {
             System.out.println(" MySQL Connection Failed: " + e.getMessage());
             e.printStackTrace();
@@ -94,6 +87,7 @@ public class MySQLConnection {
         System.out.println(" Database tests completed");
     }
 
+    //main function to call the mysql connection
     public static void main(String[] args) {
         connectToMySQL();
     }
